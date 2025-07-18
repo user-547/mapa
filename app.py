@@ -3,7 +3,6 @@ import requests
 
 app = Flask(__name__)
 
-# Mapeamento trip_id → linha e sentido (copie sua lista completa aqui)
 trip_info = {
     2936465: {"linha": "A1", "sentido": "VOLTA"},
     2936464: {"linha": "A1", "sentido": "IDA"},
@@ -80,7 +79,7 @@ def vehicles():
         try:
             resp = requests.get(url, timeout=5)
             data = resp.json()
-            # Acrescenta linha e sentido em cada veículo retornado
+            # linha e sentido em cada veículo retornado
             for vehicle in data:
                 vehicle["linha"] = trip_info[trip_id]["linha"]
                 vehicle["sentido"] = trip_info[trip_id]["sentido"]
